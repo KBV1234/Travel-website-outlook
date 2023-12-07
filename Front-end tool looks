@@ -1,0 +1,1279 @@
+js_file.js
+let searchBtn = document.querySelector("#search-btn");
+let searchBar = document.querySelector(".search-bar-container");
+let formBtn   = document.querySelector("#login-btn");
+let loginform= document.querySelector(".login-form");
+let formclose = document.querySelector("#form-close");
+let menu = document.querySelector("#menu-bar");
+let navbar = document.querySelector(".navbar");
+let videoBtn = document.querySelectorAll(".vid-btn");
+
+window.onscroll = () =>{
+    searchBtn.classList.remove('fa-times');
+    searchBar.classList.remove('active');
+    menu.classList.remove('fa-times');
+    navbar.classList.remove('active');
+    loginform.classList.remove('active');
+}
+menu.addEventListener('click',() =>{
+    menu.classList.toggle("fa-times");
+    navbar.classList.toggle('active');
+})
+searchBtn.addEventListener('click',() =>{
+    searchBtn.classList.toggle('fa-times');
+    searchBar.classList.toggle('active');
+});
+formBtn.addEventListener('click',() =>{
+    loginform.classList.add('active');
+
+});
+formclose.addEventListener('click',() =>{
+    loginform.classList.remove('active');
+});
+videoBtn.forEach(btn =>{
+    btn.addEventListener('click', ()=>{
+        document.querySelector('.controls .active').classList.remove('active');
+        btn.classList.add('active');
+        let src = btn.getAttribute('data-src');
+        document.querySelector('#video-slider').src = src;
+    });
+});
+var swiper = new Swiper(".review-slider", {
+    spaceBetween: 20,
+    loop:true,
+    autoplay:{
+        delay:2500,
+        disableOnInteraction:false,
+    },
+    breakpoints: {
+        640: {
+            slidesPerView:1,
+        },
+        768: {
+            slidesPerView:2,
+
+        },
+        1024: {
+            slidesPerView:3,
+        },
+    },
+
+});
+var swiper = new Swiper(".brand-slider", {
+    spaceBetween: 20,
+    loop:true,
+    autoplay:{
+        delay:2500,
+        disableOnInteraction:false,
+    },
+    breakpoints: {
+        450:{
+            slidesPerView: 2,
+        },
+        768: {
+            slidesPerView:3,
+        },
+        991: {
+            slidesPerView:4,
+
+        },
+        1200: {
+            slidesPerView:5,
+        },
+    },
+
+});
+
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=100, initial-scale=1.0">
+    <title>new project</title>
+    <!-- csss link -->
+    <link rel="stylesheet" href="style.css">
+    <!-- font link-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link rel="stylesheet" href="C:/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <header>
+        <div id="menu-bar" class="fas fa-bars"></div>
+
+        <a href="#" class="logo" ><span>T</span>ravel</a>
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#book">Book</a>
+            <a href="#packages">Packages</a>
+            <a href="#services">Services</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="icons">
+            <i class="fas fa-search" id="search-btn"></i>
+            <i class="fas fa-user" id="login-btn"></i>
+        </div>
+        <form action="" class="search-bar-container">
+            <input type="search" name="" id="search-bar" placeholder="search here...">
+            <label for="search-bar" class="fas fa-search"></label>
+        </form>
+    </header>
+    <div class="login-form">
+        <i id="form-close" class="fas fa-times"></i>
+        <form action="">
+            <h2>login</h2>
+            <input type="email" name="" class='box' placeholder="Enter ur email.." id="">
+            <input type="password" name="" class='box' placeholder="Password.." id="">
+            <input type="submit" value="login now" class="btn"><br>
+            <input type="checkbox" name="" id="remember">
+            <label for="remember">remember me</label>
+            <p>forgot password ? <a href="#">click here</a></p>
+            <p>don't have an account? <a href="#">Register now</a></p>
+        </form>
+    </div>
+    <!-- home section stratts -->
+    <section class="home" id="home">
+        <div class="content">
+            <h3>your journey begins now !</h3>
+            <!-- <h3>Best holiday destinations!</h3> -->
+            <!-- <h3>taking u to wondrous journey!</h3> -->
+            <p>Discover new places with us,adventure awaits</p>
+            <a href="#" class="btn">Discover more</a>
+        </div>
+        <div class="controls">
+            <span class="vid-btn active" data-src="./images/vid-2.mp4"></span>
+            <span class="vid-btn" data-src="/images/video-3.mp4"></span>
+            <span class="vid-btn" data-src='/images/vid-3.mp4'></span>
+            <span class="vid-btn" data-src='./images/production ID_3970964.mp4'></span>
+            <span class="vid-btn" data-src='/images/vid-4.mp4'></span>
+            <span class="vid-btn" data-src='/images/paris.mp4'></span>
+
+        </div>
+        <div class="video-container">
+            <video src="./images/video.mp4" loop autoplay muted id="video-slider"></video>
+        </div>
+    </section>
+    <!-- book section -->
+    <section class="book" id="book">
+        <h1 class="heading">
+            <span>b</span>
+            <span>o</span>
+            <span>o</span>
+            <span>k</span>
+            <span class="space"></span>
+            <span>n</span>
+            <span>o</span>
+            <span>w</span>
+        </h1>
+        <div class="row" id="height">
+            <div class="image">
+                <img src="./images/img-3.jpg" alt="" srcset="">
+            </div>
+            <form action="">
+                <div class="inputbox">
+                    <h3>Where to</h3>
+                    <input type="text" name="" placeholder="place name" id="">
+                </div>
+                <div class="inputbox">
+                    <h3>how many</h3>
+                    <input type="number" name="" placeholder="number of pepole" id="">
+                </div>
+                <div class="inputbox">
+                    <h3>arrival</h3>
+                    <input type="date" name=""  id="">
+                </div>
+                <div class="inputbox">
+                    <h3>leaving</h3>
+                    <input type="date" name="" id="">
+                </div>
+                <input type="submit" value="book now" class="btn">
+            </form>
+        </div>
+    </section>
+
+
+    <section class="packages" id="packages">
+        <h1 class="heading">
+            <span>p</span>
+            <span>a</span>
+            <span>c</span>
+            <span>k</span>
+            <span>a</span>
+            <span>g</span>
+            <span>e</span>
+            <span>s</span>
+        </h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="/images/p-1.jpg" alt="" srcset="">
+                <div class="content">
+                    <h3><i class="fas fa-map-marker-alt"></i> mumbai</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi incidunt asperiores et atque rerum nesciunt eum iure dolores. Modi cumque alias sint aperiam nulla odit.!</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="price">cost:30k- <span>80k</span></div><br>
+                    <a href="#" class="btn">Book now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="/images/p-2.jpg" alt="" srcset="">
+                <div class="content">
+                    <h3><i class="fas fa-map-marker-alt"></i> Sydney</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea perferendis nam sapiente natus voluptate ex pariatur!</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="price">cost:1lakh <span>1.5lakh</span></div><br>
+                    <a href="#" class="btn">Book now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="/images/p-3.jpg" alt="" srcset="">
+                <div class="content">
+                    <h3><i class="fas fa-map-marker-alt"></i> Hawaye</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea perferendis nam sapiente natus voluptate ex pariatur!</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="price">cost:80k <span>1.3lakh</span></div><br>
+                    <a href="#" class="btn">Book now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="/images/p-4.jpg" alt="" srcset="">
+                <div class="content">
+                    <h3><i class="fas fa-map-marker-alt"></i> paris</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea perferendis nam sapiente natus voluptate ex pariatur!</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="price">cost:1.2lakh <span>1.7lakh</span></div><br>
+                    <a href="#" class="btn">Book now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="/images/p-5.jpg" alt="" srcset="">
+                <div class="content">
+                    <h3><i class="fas fa-map-marker-alt"></i> Tokyo</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea perferendis nam sapiente natus voluptate ex pariatur!</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="price">cost:1.1lakh- <span>1.5lakh</span></div><br>
+                    <a href="#" class="btn">Book now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="/images/p-6.jpg" alt="" srcset="">
+                <div class="content">
+                    <h3><i class="fas fa-map-marker-alt"></i> Egypt</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ea perferendis nam sapiente natus voluptate ex pariatur!</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="price">cost:90k <span>1.5lakh</span></div><br>
+                    <a href="#" class="btn">Book now</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+    <section class="services" id="services">
+        <h1 class="heading">
+            <span>S</span>
+            <span>e</span>
+            <span>r</span>
+            <span>v</span>
+            <span>i</span>
+            <span>c</span>
+            <span>e</span>
+            <span>s</span>
+        </h1>
+        <div class="box-container">
+            <div class="box">
+                <i class="fas fa-hotel"></i>
+                <h3>affordabale hot</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi officia ut aperiam ducimus dolor veritatis?</p>
+            </div>
+            <div class="box">
+                <i class="fas fa-utensils"></i>
+                <h3>food and drinks</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi officia ut aperiam ducimus dolor veritatis?</p>
+            </div>
+            <div class="box">
+                <i class="fas fa-bullhorn"></i>
+                <h3>saftey guide</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi officia ut aperiam ducimus dolor veritatis?</p>
+            </div>
+            <div class="box">
+                <i class="fas fa-globe-asia"></i>
+                <h3>around the world</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi officia ut aperiam ducimus dolor veritatis?</p>
+            </div>
+            <div class="box">
+                <i class="fas fa-plane-departure"></i>
+                <h3>fastest travel</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi officia ut aperiam ducimus dolor veritatis?</p>
+            </div>
+            <div class="box">
+                <i class="fas fa-hiking"></i>
+                <h3>adventures</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi officia ut aperiam ducimus dolor veritatis?</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="gallery" id="gallery">
+        <h1 class="heading">
+            <span>g</span>
+            <span>a</span>
+            <span>l</span>
+            <span>l</span>
+            <span>e</span>
+            <span>r</span>
+            <span>y</span>
+        </h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="./images/g-1.jpg" alt="" srcset="">
+                <div class="content">
+                    <h3>amazing places</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, facilis!</p><br>
+                    <a href="http://" class="btn">see more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="./images/g-6.jpg" alt="" srcset="">
+                <div class="content">
+                    <h3>amazing places</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, facilis!</p><br>
+                    <a href="http://" class="btn">see more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="./images/g-8.jpg" alt="" srcset="">
+                <div class="content">
+                    <h3>amazing places</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, facilis!</p><br>
+                    <a href="http://" class="btn">see more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="./images/g-3.jpg" alt="" srcset="">
+                <div class="content">
+                    <h3>amazing places</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, facilis!</p><br>
+                    <a href="http://" class="btn">see more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="./images/g-2.jpg" alt="" srcset="">
+                <div class="content">
+                    <h3>amazing places</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, facilis!</p><br>
+                    <a href="http://" class="btn">see more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="./images/g-7.jpg" alt="" srcset="">
+                <div class="content">
+                    <h3>amazing places</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, facilis!</p><br>
+                    <a href="http://" class="btn">see more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="./images/g-5.jpg" alt="" srcset="">
+                <div class="content">
+                    <h3>amazing places</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, facilis!</p><br>
+                    <a href="http://" class="btn">see more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="./images/g-4.jpg" alt="" srcset="">
+                <div class="content">
+                    <h3>amazing places</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, facilis!</p><br>
+                    <a href="http://" class="btn">see more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="./images/g-9.jpg" alt="" srcset="">
+                <div class="content">
+                    <h3>amazing places</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, facilis!</p><br>
+                    <a href="http://" class="btn">see more</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="review" id="review">
+        <h1 class="heading">
+            <span>r</span>
+            <span>e</span>
+            <span>v</span>
+            <span>i</span>
+            <span>e</span>
+            <span>w</span>
+        </h1>
+        <div class="swiper mySwiper review-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class=" box">
+                        <img src="./images/chaitu.jpg" alt="" srcset="">
+                        <h3>chaitu reddy</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt facilis omnis alias quod iusto dolorum reprehenderit commodi ipsam, adipisci dicta sapiente saepe sunt id voluptatem.</p>
+
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="./images/palak.jpg" alt="" srcset="">
+                        <h3>palak</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt facilis omnis alias quod iusto dolorum reprehenderit commodi ipsam, adipisci dicta sapiente saepe sunt id voluptatem.</p>
+
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="./images/ram.jpg" alt="" srcset="">
+                        <h3>NavamshuRam</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt facilis omnis alias quod iusto dolorum reprehenderit commodi ipsam, adipisci dicta sapiente saepe sunt id voluptatem.</p>
+
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="./images/harshita.jpg" alt="" srcset="">
+                        <h3>Harshita</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt facilis omnis alias quod iusto dolorum reprehenderit commodi ipsam, adipisci dicta sapiente saepe sunt id voluptatem.</p>
+
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="./images/hitesh.jpg" alt="" srcset="">
+                        <h3>Hitesh Reddy</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt facilis omnis alias quod iusto dolorum reprehenderit commodi ipsam, adipisci dicta sapiente saepe sunt id voluptatem.</p>
+
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact">
+        <h1 class="heading">
+            <span>c</span>
+            <span>o</span>
+            <span>n</span>
+            <span>t</span>
+            <span>a</span>
+            <span>c</span>
+            <span>t</span>
+        </h1>
+        <div class="row">
+            <div class="image">
+                <img src="./images/contact2.jpg" alt="" srcset="">
+            </div>
+            <form action="">
+                <div class="inputbox">
+                    <input type="text" name="" placeholder="name" id="">
+                    <input type="email" name="" placeholder="email" id="">
+                </div>
+                <div class="inputbox">
+                    <input type="number" name="" placeholder="number" id="">
+                    <input type="text" name="" placeholder="subject" id="">
+                </div>
+                <textarea name="" placeholder="message" id="" cols="30" rows="10"></textarea><br>
+                <input type="submit" value="send message" class="btn">
+            </form>
+        </div>
+    </section>
+
+
+
+    <section class=" brandcontainer">
+        <div class="swiper mySwiper brand-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="/images/oyo1.png" alt="" srcset=""></div>
+                <div class="swiper-slide"><img src="/images/australia.jpg" alt="" srcset=""></div>
+                <div class="swiper-slide"><img src="/images/paytm.png" alt="" srcset=""></div>
+                <div class="swiper-slide"><img src="/images/IMG_20220109_103610.jpg" alt="" srcset=""></div>
+                <div class="swiper-slide"><img src="/images/tours.jpg" alt="" srcset=""></div>
+                <div class="swiper-slide"><img src="/images/6.jpg" alt="" srcset=""></div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>about us</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, pariatur magni nihil maxime optio rerum laudantium eum dolore provident autem.</p>
+            </div>
+            <div class="box">
+                <h3>branch location</h3>
+                <a href="#">hyderabad</a>
+                <a href="#">mysore</a>
+                <a href="#">banglore</a>
+                <a href="#">vijayawada</a>
+                <a href="#">tirupati</a>
+            </div>
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="#">home</a>
+                <a href="#">book</a>
+                <a href="#">packages</a>
+                <a href="#">services</a>
+                <a href="#">gallery</a>
+                <a href="#">review</a>
+                <a href="#">contact</a>
+            </div>
+            <div class="box">
+                <h3>follow us</h3>
+                <a href="#">facebook</a>
+                <a href="#">instagram</a>
+                <a href="#">linkedin</a>
+                <a href="#">gmail</a>
+
+            </div>
+        </div>
+        <h1 class="credit">created by <span> R.THARUN REDDY   </span>   all rights reserved!</h1>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- javascript file -->
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="/Jsfile.js"></script>
+</body>
+</html>
+
+style.css
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,600;1,700;1,800;1,900&family=Poppins:wght@200;300;400;600;700&display=swap');
+:root{
+    --orange:#ffa500;
+}
+*{
+    font-family: 'Nunito',sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    outline: none;
+    border: none;
+    transition: all .2s linear;
+}
+::selection{
+    background-color: greenyellow;
+    color: white;
+}
+html{
+    font-size: 62.5%;
+    overflow-x : hidden;
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+}
+section{
+    padding: 2rem 9%;
+}
+header{
+    position: fixed;
+    top: 0%;
+    left: 0%; 
+    right: 0%;
+    background: #333;
+    z-index: 1000;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 2rem 9%;
+}
+header .logo{
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+header .logo span{
+/*     color: var(--orange); */
+    color: greenyellow;
+}
+header .navbar a{
+    text-decoration: none;
+    color: white;
+    font-size: 2rem;
+    margin:0 .8rem;
+
+}
+header .navbar a:hover{
+    color: greenyellow;
+    transition: linear;
+    transition-duration: .5s;
+
+}
+header .icons i{
+    font-size: 2.5rem;;
+    color: white;
+    cursor: pointer;
+    margin-right: 2rem;
+
+}
+header .icons i:hover{
+    color: greenyellow
+}
+
+header .search-bar-container{
+    position: absolute;
+    top: 100%;left: 0;right: 0;
+    padding: 1.5rem 2rem;
+    background: #333;
+    border-top: .1rem solid rgba(255,255,255,.2);
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+    clip-path: polygon(0 0, 100% 0, 100% 0,0 0);
+}
+header .search-bar-container.active{
+    clip-path: polygon(0 0, 100% 0, 100% 100%,0 100%);
+}
+header .search-bar-container #search-bar{
+    width: 100%;
+    padding: 1rem;
+    text-transform: none;
+    color: #333;
+    font-size: 1,7rem;
+    border-radius: .5rem;
+}
+header .search-bar-container label{
+    color: white;
+    cursor: pointer;
+    font-size: 3rem;
+    margin-left: 1.5rem;
+}
+header .search-bar-container label:hover{
+    color: greenyellow
+}
+.login-form{
+    position: fixed;
+    top: -120%;
+    left: 0%;
+    min-height: 100vh;
+    width: 100%;
+    z-index: 10000;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-form.active{
+    top: 0%;
+}
+.login-form form{
+    margin: 2rem;
+    padding: 1.5rem 2rem;
+    border-radius: .5rem;
+    background: white;
+    width: 50rem;
+
+}
+.login-form form h2{
+    font-size: 3rem;
+    color: #444;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 1rem 0;
+}
+.btn{
+    margin-top: 1rem;
+    background-color: greenyellow;
+    padding: .8rem 3rem;
+    font-size: 2rem;
+    border: 1px solid greenyellow;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: .5rem;
+}
+.btn:hover{
+    background-color: white;
+    color: green;
+    text-decoration: underline;
+}
+.login-form form .box{
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.7rem;
+    color: #333;
+    margin: .6rem 0;
+    border:0.1rem solid rgba(0,0,0,0.3);
+    text-transform: none;
+
+}
+.login-form form .box:focus{
+    border-color: greenyellow;
+}
+.login-form form #remember{
+    margin: 2rem 0;
+}
+.login-form form label{
+    font-size: 1.5rem;
+}
+.login-form form .btn{
+    display: block;
+    width: 100%;
+}
+.login-form form p{
+    padding: .5rem 0;
+    font-size: 1.5rem ;
+    color: #444;
+}
+.login-form form p a{
+    color: green;
+    text-decoration: none;
+}
+.login-form form p a:hover{
+    color:blue;
+    text-decoration: underline;
+}
+.login-form #form-close{
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    font-size: 5rem;
+    color: #fff;
+    cursor: pointer;
+}
+#menu-bar{
+    color: white;
+    border: .1rem solid white;
+    border-radius: .5rem ;
+    font-size: 3rem;
+    padding: .3rem 1.2rem;
+    display: none;
+}
+.home{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    position: relative;
+    z-index: 0%;
+
+}
+.home .content{
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+
+}
+.home .content h3{
+    font-size: 4.5rem;
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 0 .3rem .5rem rgba(0,0,0,0.1) ;
+   /*  background-color: rgba(0,0,0,0.5); */
+}
+.home .content p{
+    font-size: 2.5rem;
+    color: white;
+    padding: .5rem 0;
+    margin-bottom: 2rem;
+
+}
+.home .video-container video{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+}
+
+.home .controls{
+    padding: 1rem;
+    border-radius: 5rem;
+    background: rgba(0,0,0,.7);
+    position: relative;
+    top: 10rem;
+}
+.home .controls .vid-btn{
+    height: 2rem;
+    width: 2rem;
+    display: inline-block;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    margin: 0 .5rem;
+
+}
+.home .controls .vid-btn.active{
+    background-color: greenyellow;
+}
+.heading{
+    text-align: center;
+    padding: 2.5rem 0;
+}
+.heading span{
+    font-size: 3.5rem;
+    background: rgba(241, 182, 71, 0.2);
+    color: rgb(108, 173, 10);
+    border-radius: .5rem ;
+    padding: .2rem 1rem;
+}
+.heading span.space{
+    background: none;
+}
+.book .row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+.book .row .image{
+    flex: 1 1 40rem;
+}
+.book .row .image img{
+    width: 100%;
+}
+/* .book.row form{
+    flex: 1 1 40rem;
+    padding: 2rem;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
+    border-radius: .5rem;
+    font-size:90px;
+}
+ */
+.book .row form{
+    flex: 1 1 40rem;
+    padding: 2rem;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
+    border-radius: .5rem;
+}
+.book .row form .inputbox{
+    padding: .5rem 0;
+}
+.book .row form .inputbox input{
+    width: 100%;
+    padding: 1rem;
+    border: .1rem solid rgba(0,0,0,0.1);
+    color: #333;
+    text-transform:none;
+
+}
+.book .row form .inputbox h3{
+    font-size: 2rem;
+    padding: 1rem 0;
+    color: #666;
+}
+/* .packages .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+.packages .box-container .box{
+    flex: 1 1 30rem;
+    border-radius: .5rem;
+    overflow: hidden;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
+}
+.packages .box-container .box img{
+    height: 25rem;
+    width: 100%;
+    object-fit: cover;
+}
+ */
+.packages .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+.packages .box-container .box{
+    flex: 1 1 30rem;
+    border-radius: .5rem;
+    overflow: hidden;
+    box-shadow: 0 1rem 1rem rgba(0,0,0,0.1);
+}
+.packages .box-container .box img{
+    height: 25rem;
+    width: 100%;
+    object-fit: cover;
+}
+.packages .box-container .box .content{
+    padding: 2rem;
+}
+
+.packages .box-container .box .content h3{
+    font-size: 2rem;
+    color: #333;
+}
+.packages .box-container .box .content h3 i{
+    color: rgb(126, 204, 10);
+}
+.packages .box-container .box .content p{
+    font-size: 1.7rem;
+    color: #666;
+    padding: 1rem 0;
+}
+.packages .box-container .box .content .stars i{
+    color: rgb(126, 204, 10);
+    font-size: 1.7rem;
+}
+.packages .box-container .box .content .price{
+    font-size: 2rem;
+    color: #333;
+    padding-top: .5rem;
+}
+.packages .box-container .box .content .price span{
+    color: #666;
+    font-size: 1.5rem;
+    text-decoration: line-through;
+}
+
+.services .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+.services .box-container .box{
+    flex: 1 1 30rem;
+    border-radius: .5rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.services .box-container .box i{
+    padding: 1rem;
+    font-size: 5rem;
+    color: greenyellow;
+}
+.services .box-container .box h3{
+    font-size: 2.5rem;
+    color: #333;
+}
+.services .box-container .box p{
+    font-size: 1.5rem;
+    color: #666;
+    padding: 1rem 0;
+}
+.services .box-container .box:hover {
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
+}
+.gallery .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem ;
+
+}
+
+.gallery .box-container .box{
+    overflow: hidden;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
+    border: 1rem solid white;
+    border-radius: .5rem;
+    flex: 1 1 30rem;
+    height: 25rem;
+    position: relative
+}
+.gallery .box-container .box img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.gallery .box-container .box .content{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: rgba(0,0,0,0.3);
+    padding: 2rem;
+    padding-top: 5rem;
+}
+
+.gallery .box-container .box .content h3{
+    font-size: 2.5rem;
+    color: greenyellow;
+}
+.gallery .box-container .box .content p{
+    font-size: 1.4rem;
+    color: white;
+    padding: .5rem 0;
+}
+.gallery .box-container .box:hover .content{
+    top: 0;
+}
+.review .review-slider{
+    padding-bottom: 2rem;
+}
+.review .box{
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
+    border-radius: .5rem;
+}
+.review .box img{
+    height: 13rem;
+    width: 13rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+.review .box h3{
+    color:#333;
+    font-size: 2.5rem;
+}
+.review .box p{
+    color: #333;
+    font-size: 1.5rem;
+    padding: 1rem o;
+}
+.review .box .stars i{
+    color: green;
+    font-size: 1.5rem;   
+}
+.contact .row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+.contact .row .image{
+    flex: 1 1 35rem;
+}
+.contact .row form{
+    flex: 1 1 50rem;
+    padding: 2rem;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
+    border-radius: .5rem;
+}
+
+.contact .row .image img{
+    width: 100%;
+}
+.contact .row form .inputbox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.contact .row form .inputbox input,.contact .row form textarea{
+    width:49%;
+    margin: 1rem 0;
+    padding: 1rem;
+    font-size: 1.7rem;
+    color: #333;
+    background: whitesmoke;
+    text-transform: none;
+}
+.contact .roww form textarea{
+    height: 15rem;
+    resize: none;
+    width: 100%;
+}
+.brandcontainer .brand-slider .swiper-wrapper img{
+    width: 100%;
+    height: 100%;
+}
+.brandcontainer{
+    text-align: center;
+}
+.footer{
+    background: #333;
+
+}
+.footer .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem ;
+
+}
+.footer .box-container .box{
+    padding: 1rem 0;
+    flex:1 1 25rem;
+}
+.footer .box-container .box h3{
+    font-size: 2.5rem;
+    padding: 0.7rem 0;
+    color: white;
+
+}
+.footer .box-container .box p{
+    font-size: 1.5rem;
+    padding: .7rem 0;
+    color: whitesmoke;
+}
+.footer .box-container .box a{
+    display: block;
+    font-size: 1.5rem;
+    padding: .7rem 0;
+    color: whitesmoke;
+}
+.footer .box-container .box a:hover{
+    color: greenyellow;
+    text-decoration: underline;
+
+}
+.footer .credit{
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    font-weight: normal;
+    color: white;
+    border-top: .1rem solid rgba(255,255,255,.2);
+}
+.footer .credit span{
+    color: greenyellow;
+}
+
+
+
+
+
+
+
+
+@media(max-width:1200px){
+    html{
+        font-size: 55%;
+    }
+}
+@media(max-width:990px){
+    header{
+        padding: 2rem;
+    }
+    section{
+        padding: 2rem;
+    }
+
+}
+@media(max-width:700px){
+    #menu-bar{
+        display: initial;
+    }
+    header .navbar{
+        position: absolute;
+        top: 100%;right: 0;left: 0;
+        background: #333;
+        border-top:0.1rem solid rgba(255,255,255,.2);
+        padding: 1rem 2rem;
+        clip-path: polygon(0 0, 100% 0, 100% 0,0 0);
+    }
+    header .navbar.active{
+        clip-path: polygon(0 0, 100% 0, 100% 100%,0 100%);
+    }
+    header .navbar a{
+        display: block;
+        border-radius: .5rem;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        background: #666;
+    }
+}
+@media(max-width:450px){
+    html{
+        font-size: 50%;
+    }
+    .heading span{
+        font-size: 2.5rem;
+    }
+    .contact .row form .inputbox input{
+        width: 100%;
+    }
+}
